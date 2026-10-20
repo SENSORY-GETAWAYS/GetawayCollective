@@ -107,6 +107,19 @@
 .site .now .para{margin:0}
 .site .now-act{display:flex;flex-wrap:wrap;align-items:center;gap:var(--gc-sp-xs) var(--gc-sp-m);margin:var(--gc-sp-xs) 0 0}
 .site .now-act .hero-link{color:inherit}
+/* 20 Oct 2026 (investor voice): is this for you, who is behind it, what can go wrong. */
+.site :is(.fit,.parties){padding:var(--sec) var(--gut);display:grid;gap:var(--gc-sp-m);border-top:1px solid var(--gc-hairline)}
+.site .fit-h{display:grid;gap:var(--gc-sp-xs);max-width:760px}
+.site .fit-h .h2{margin:0}
+.site .fit-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:var(--gc-sp-l)}
+.site .fit h3{margin:0 0 var(--gc-sp-xs);font:700 18px/1.25 var(--display);letter-spacing:-.01em}
+.site .fit ul{margin:0;padding-left:1.1em;display:grid;gap:var(--gc-sp-xs);max-width:var(--read);font:500 16px/1.55 var(--text)}
+.site .fit .para-s{margin:var(--gc-sp-s) 0 0}
+.site .parties dl{margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:var(--gc-sp-m)}
+.site .parties dl>div{display:grid;gap:var(--gc-sp-2xs);align-content:start;padding-top:var(--gc-sp-s);border-top:1px solid var(--gc-hairline)}
+.site .parties dt{font:700 18px/1.2 var(--display);letter-spacing:-.01em}
+.site .parties dd{margin:0;font:500 15px/1.55 var(--text)}
+.site .now.why{border-top:1px solid var(--gc-hairline)}
 .site .explore-all{padding:var(--gc-sp-l) var(--gut) 0;margin:0}
 @media (max-width:640px){.site .hero .hp{font-size:clamp(34px,10vw,56px)}}
 .site .mani p{margin:0;font:800 clamp(30px,4.4vw,64px)/1.08 var(--display);letter-spacing:-.03em}

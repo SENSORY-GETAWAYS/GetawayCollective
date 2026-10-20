@@ -62,8 +62,9 @@ export const HOME_JOURNAL: readonly { readonly slug: string; readonly pal: strin
   { slug: "the-night-is-not-the-product", pal: "coast", hour: 10 },
 ];
 
+/* 20 Oct 2026 (founder, "the expert's curse"): what you are buying, said plainly. */
 export const MANIFESTO =
-  "Modern luxury is the absence of noise. We build small places to one standard, hold each one in its own partnership, and govern it for the people who own it. We hold none of it ourselves.";
+  "You put money into one place you can visit: land and buildings in Karnataka, run as a small retreat and earning from its guests. You own it with a handful of other partners, through a partnership of its own, and you decide together what happens to it.";
 
 /** The three chassis, drawn. */
 export const TRIO = [

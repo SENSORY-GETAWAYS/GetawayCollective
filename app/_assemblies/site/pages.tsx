@@ -16,7 +16,7 @@
 import { notFound } from "next/navigation";
 import { ESTATES, FAQX } from "@/content/site/estates";
 import { PAGES } from "@/content/site/pages";
-import { COLLECTION, FAQ, HOME_JOURNAL, HOME_STACK, MANIFESTO, NEXT_ESTATES, TRIO, type CollectionEstate } from "@/content/site/home";
+import { COLLECTION, FAQ, HOME_JOURNAL, HOME_STACK, MANIFESTO, NEXT_ESTATES, type CollectionEstate } from "@/content/site/home";
 import { JOURNAL, KIND_LABEL } from "@/content/journal";
 import { DOCUMENTS } from "@/content/legal";
 import { VEHICLES, vehicleBySlug } from "@/constants/vehicles";
@@ -25,7 +25,7 @@ import { type CalcEstate } from "./calc";
 import { chapterContent } from "../propertychapter";
 import type { ChapterId } from "@/constants/property-chapters";
 import { daHTML } from "../da/render";
-import { FORM, NE, PROP, TXT, esc, faqHTML, film, fill, inkify, plate } from "./render";
+import { FORM, NE, PROP, TXT, esc, faqHTML, film, fill, plate } from "./render";
 import { graphicHTML } from "./infographics";
 import { JOURNAL_EXTRAS } from "@/content/site/journal-extras";
 import { fundingComplete, heldBy, landPublic, openReading, ownershipPrivate, publicName, read, rupees, rupeesFull, src, vehicleOf, type Prov } from "./registry";
@@ -89,6 +89,10 @@ export function SiteHome() {
   };
   /* An estate's own picture, where it has one (content/site/media.ts); its drawn film otherwise. */
   const imgOf = (href: string) => COLLECTION.find((c) => c.href === href)?.img;
+  const openV = VEHICLES.find((v) => v.offering.available > 0 && v.offering.deposit);
+  /* 20 Oct 2026: each estate's promoter money, from its register (offering.promoter). */
+  const stakes = VEHICLES.filter((v) => v.lifecycle !== "forming" && v.offering.promoter > 0n && !ownershipPrivate(v.slug)).map((v) =>
+    `at ${esc(publicName(v))} ${rupees(v.offering.promoter)} of ${rupees(v.offering.totalEquity)}${v.offering.promoterIs ? `, ${esc(v.offering.promoterIs)}` : ""}`).join("; ");
   const html =
     // ── who we are, and what is offered ──
     /* 15 Oct 2026 (audit, section 5): the first thing a visitor reads is what
@@ -104,40 +108,66 @@ export function SiteHome() {
     '<span class="plate-tag hero-tag">Illustration · unbuilt</span>' +
     '<h1 class="hp">Own a share of <span>a retreat in India.</span></h1>' +
     '<div class="hero-foot"><span></span>' +
-    '<div class="hero-own"><p>Own units in the partnership that holds a retreat. We govern it and hold none of it; an operating partner runs it.</p>' +
+    /* 20 Oct 2026 (founder, "the expert's curse"): the home page answers an
+       investor's questions in the order they ask them: what is this, is it
+       for me, who is behind it, what do I own, what can go wrong. Builder's
+       detail moved off this page; it lives on the estate pages. */
+    '<div class="hero-own"><p>Buy units in one retreat in Karnataka. Each estate is its own LLP, and the people who build it put their own money in on the same terms as you.</p>' +
     `<div class="hero-act"><a class="btn lead" href="/collection">Explore the collection ${NE}</a><a class="hero-link" href="/how-it-works">How ownership works</a><button type="button" class="hero-link hero-play" hidden>Play the film</button></div>` +
     '<p class="hero-risk">Capital is at risk.</p></div></div></section>' +
-    /* The manifesto is read, not revealed a word at a time. */
     `<section class="mani mani-still"><p>${MANIFESTO}</p></section>` +
+    // ── is this for you ──
+    '<section class="fit"><div class="fit-h"><span class="eb">Is this for you</span><h2 class="h2">Worth reading on <span>if this is you.</span></h2></div>' +
+    '<div class="fit-cols"><div><h3>It may suit you if</h3><ul>' +
+    `<li>You have money you will not need for some years. Most estates lock units in for 36 months, and there is no market to sell them on quickly.</li>` +
+    '<li>You want something you can stand in: one estate you can visit, not a fund spread across many.</li>' +
+    '<li>You accept that income depends on guests who have not yet come, and that you could lose money.</li>' +
+    (openV ? `<li>You can take at least one unit at the estate’s price. At ${esc(publicName(openV))}, open now, one unit is ${rupees(openV.offering.unitPrice)}.</li>` : "") +
+    '</ul></div><div><h3>It is not for</h3><ul>' +
+    '<li>Money you may need back soon.</li>' +
+    '<li>A fixed or guaranteed income. Nobody guarantees a return, including us.</li>' +
+    '<li>A holiday home you control alone. You decide together with the other partners.</li>' +
+    '</ul><p class="para para-s">Living outside India, or investing for a family office? Start with <a class="tx-u" href="/answers">the answers</a>: who can invest, and how much one partner may hold.</p></div></div></section>' +
+    // ── who is behind it ──
+    '<section class="parties"><div class="fit-h"><span class="eb">Who is behind it</span><h2 class="h2">Four parties, <span>each named.</span></h2></div><dl>' +
+    '<div><dt>NAVINA Structures</dt><dd>Forms each estate’s LLP. Your holding deposit is paid to NAVINA, which holds it as a fiduciary until the partnership admits you as a partner.</dd></div>' +
+    `<div><dt>The promoters</dt><dd>Put their own money into each estate on the same terms as you: the same units, paid at the same stage, so if an estate loses money they lose in the same proportion. ${stakes ? stakes.charAt(0).toUpperCase() + stakes.slice(1) : "Each estate’s offering letter states the amount"}. Who holds each stake is being confirmed estate by estate.</dd></div>` +
+    '<div><dt>Sensory Getaways</dt><dd>Runs each estate day to day: the guests, the staff and the upkeep. It is paid first from revenue, measured against agreed service levels, and the partners can replace it.</dd></div>' +
+    '<div><dt>Getaway Collective</dt><dd>Keeps each partnership’s records and register, runs its votes and publishes what it knows. It owns none of any estate, and is paid a set share for that work, never from what reaches partners.</dd></div>' +
+    '</dl></section>' +
     /* The estate open now, told in a sentence or two, with where to read the rest. */
     (pack ? `<section class="now"><div><span class="eb">Open now</span><h2 class="h2">${esc(pack.name)}</h2>` +
       `<p class="para">${esc(COLLECTION.find((c) => c.href === `/collection/${pack.vehicle.slug}`)?.character?.replace(/<[^>]+>/g, "") ?? "")} ` +
-      `${pack.vehicle.offering.available === pack.vehicle.offering.units ? `All ${pack.vehicle.offering.units} of its units are offered` : `${pack.vehicle.offering.available} of its ${pack.vehicle.offering.units} units are still offered`}, at ${rupees(pack.vehicle.offering.unitPrice)} each, in ${esc(pack.vehicle.registeredName)}${pack.vehicle.llpin ? "" : ", a partnership still being formed"}. ` +
-      `Before you decide, read what is still open${pack.vehicle.slug === "coorg-coffee-creek" ? ": its terms not yet set, its loan not yet sanctioned, and the land valued at the founders' own figure" : ""}.</p>` +
+      `${pack.vehicle.offering.available === pack.vehicle.offering.units ? `All ${pack.vehicle.offering.units} of its units are offered` : `${pack.vehicle.offering.available} of its ${pack.vehicle.offering.units} units are still offered`}, at ${rupees(pack.vehicle.offering.unitPrice)} each, in ${esc(pack.vehicle.registeredName)}${pack.vehicle.llpin ? "" : ", a partnership NAVINA Structures is still forming"}. ` +
+      `Before you decide, read what is still open${pack.vehicle.slug === "coorg-coffee-creek" ? ": its terms not yet set, its loan not yet sanctioned, and the land valued at the founders’ own figure" : ""}.</p>` +
       `<p class="now-act"><a class="btn lead" href="/collection/${pack.vehicle.slug}">Read about ${esc(pack.name)} ${NE}</a><a class="hero-link" href="/collection/${pack.vehicle.slug}/risk">What is still open</a></p></div></section>` : "") +
-    // ── what owning means ──
-    /* 15 Oct 2026: the estates' own pictures, where there were three drawn films. */
+    // ── what you own ──
     `<section class="ref"><div>${plate("solace/mist", { sizes: "(max-width: 700px) 100vw, 34vw", tag: "none" })}</div><div>${plate("creek/water", { sizes: "(max-width: 700px) 100vw, 34vw", tag: "none" })}</div><div>${plate("cff/fire", { sizes: "(max-width: 700px) 100vw, 34vw", tag: "none" })}</div>` +
-    '<div class="mid"><div><span class="eb">What you own</span><b>ONE ESTATE, ONE LLP</b><p class="para para-s">Units in the partnership that holds the land and the buildings. Partners decide, by equity; one operating partner runs every estate.</p><a class="btn" href="/how-it-works">How ownership works</a></div></div></section>' +
+    '<div class="mid"><div><span class="eb">What you own</span><b>ONE ESTATE, ONE LLP</b><p class="para para-s">A limited liability partnership is a registered partnership in which each partner’s liability is limited to what they agreed to put in. Each estate has its own. Your units are a share of that one partnership: a share of what it pays out, a vote on its decisions, and nights at the estate once it is built.</p><a class="btn" href="/how-it-works">How ownership works</a></div></div></section>' +
     // ── four estates, up close ──
     '<div class="explore-h"><span class="eb">The collection</span><h2 class="h2">Explore our <span>estates</span></h2></div>' +
     '<div class="stackfilm">' + HOME_STACK.map((s) =>
       `<section class="sf${imgOf(s.href) ? " sf-img" : ""}">${imgOf(s.href) ? plate(imgOf(s.href)!, { tag: "tl" }) : film(s.pal, s.hour, { rain: s.rain })}<div class="ov"><div><h3>${s.name}</h3><p>${s.line}</p>${s.chip ? `<p class="sf-d">${s.chip}</p>` : ""}<span class="chip">${esc(state(s.vehicleKey, s.href))}</span></div></div>` +
       `<a class="btn go" href="${s.href}">${s.cta} ${NE}</a></section>`).join("") + "</div>" +
-    /* 15 Oct 2026 (audit, section 5): the frames repeated the list above; one way to browse. */
     `<p class="explore-all"><a class="tx-u" href="/collection">All ${Nw.toLowerCase()} estates, and where each one stands</a></p>` +
     // ── still to come ──
-    '<section class="next"><div class="center gut"><h2 class="h2">Next <span>estates</span></h2><p class="para mute">Named, surveyed, not yet open. Each will arrive with its own offering letter.</p></div><div class="rail">' +
+    '<section class="next"><div class="center gut"><h2 class="h2">Next <span>estates</span></h2><p class="para mute">Chosen and surveyed, not yet open for investment. Each will have its own offering letter before anyone is asked for money.</p></div><div class="rail">' +
     NEXT_ESTATES.map((n) => `${n.href ? `<a class="nc" href="${n.href}">` : '<article class="nc">'}<div class="im">${film(n.pal, n.hour)}</div><h4>${n.name}</h4><p>${n.line}</p>${n.href ? "</a>" : "</article>"}`).join("") + "</div></section>" +
-    // ── how they are built, and who runs them ──
-    '<section class="makers"><div class="trio">' +
-    TRIO.map((t) => `<figure><svg viewBox="0 0 200 200" aria-hidden="true">${inkify(t.svg)}</svg><figcaption><b>${t.name}</b><span>${t.sub}</span></figcaption></figure>`).join("") +
-    '</div><div><span class="eb">Built as a system</span><h2 class="h2">Three chassis. <span>Every estate.</span></h2></div>' +
-    '<div><p class="para">Each estate is assembled from the same three architectural systems: one on the ground, one lifted to the horizon, one opened into volume. The land changes; the standard does not. That is how a small place can be built as carefully the tenth time as the first.</p>' +
-    '<a class="btn gray" href="/collection/slowspace-solace#concept">See them at Solace</a></div></section>' +
-    `<section class="fullbleed">${plate("creek/night")}<div class="cap"><span class="eb">Run by our operating partner</span>` +
-    '<h2 class="h2">You own it. <span>Nobody asks you to run it.</span></h2><p class="para">Sensory Getaways operates every estate under a Commercial Services Agreement, measured on service levels and paid from the first stage of the waterfall. Partners decide; the operator delivers.</p>' +
+    // ── why a retreat ──
+    '<section class="now why"><div><span class="eb">Why a retreat</span><h2 class="h2">Real estate <span>that earns from guests.</span></h2>' +
+    '<p class="para">Land and buildings behave differently from shares: you can visit them, and nobody reprices them every second. A retreat adds income from the nights it sells to guests, and nights of your own as a partner. It also adds the risks of a small hotel: it has to be built, it has to find its guests, and it has to be run well. Each estate page sets out both sides, with its own figures.</p>' +
+    '<p class="now-act"><a class="btn" href="/journal/beautiful-assets-terrible-investments">Why beautiful assets can still be poor investments</a></p></div></section>' +
+    `<section class="fullbleed">${plate("creek/night")}<div class="cap"><span class="eb">Run for you</span>` +
+    '<h2 class="h2">You own it. <span>Nobody asks you to run it.</span></h2><p class="para">Sensory Getaways runs every estate for its partners: the guests, the staff and the upkeep. It is paid first from revenue, measured against agreed service levels, and answers to the partners’ vote, which can replace it.</p>' +
     '<a class="btn" href="/operating-partner">The operating partner</a></div></section>' +
+    // ── what can go wrong ──
+    '<section class="fit risks"><div class="fit-h"><span class="eb">Before you decide</span><h2 class="h2">What can <span>go wrong.</span></h2></div><ul>' +
+    '<li>Building can run late or cost more than planned.</li>' +
+    '<li>Guests may come more slowly than modelled. No estate has a trading record yet.</li>' +
+    '<li>Where an estate has a bank loan, the bank is paid before partners.</li>' +
+    '<li>Units cannot be sold quickly. There is no public market for them.</li>' +
+    '<li>You can lose some or all of the money you put in.</li>' +
+    '</ul><p><a class="btn dark" href="/legal/risk-disclosure">Read the Risk Factors in full</a></p></section>' +
     // ── the Journal, and the pack ──
     '<section class="news"><div class="center gut"><h2 class="h2">From the <span>Journal</span></h2></div><div class="rail">' +
     journal.map((j) => `<article class="nw"><h4>${j.e!.title}</h4><div class="im">${film(j.pal, j.hour, { bp: j.bp })}</div><div class="ft"><span class="eb">${KIND_LABEL[j.e!.kind]} · ${j.e!.minutes} min</span><a class="btn gray" href="/journal/${j.slug}">Read</a></div></article>`).join("") +
@@ -145,11 +175,11 @@ export function SiteHome() {
     (pack
       ? `<section class="pack"><div class="col">${imgOf(`/collection/${pack.vehicle.slug}`) ? plate(imgOf(`/collection/${pack.vehicle.slug}`)!, { sizes: "(max-width: 900px) 100vw, 52vw" }) : film("creek", 12, { bp: true })}</div><div class="tx"><span class="eb">The offering pack</span>` +
         `<h2 class="h2 h2-s">Get the <span>${esc(pack.name)} offering pack</span></h2>` +
-        `<p class="para dim">The drawings, the structure of ${esc(pack.vehicle.registeredName)}, ${pack.vehicle.operating.cascade?.length ? "the order of payment" : "the waterfall"} and the risk disclosure, in one document. Sent after a short qualification.</p>` +
+        `<p class="para dim">Everything about this one estate in one document: the drawings, how its partnership is set up, who is paid in what order, and the risks. Sent after a few short questions.</p>` +
         `<div><a class="btn lead" href="/collection/${pack.vehicle.slug}/enquire?about=pack">Request the pack ${NE}</a></div></div></section>`
       : "") +
     '<section class="who"><div><span class="eb">Who we are</span><p class="q"><b>You own.</b> We steward.<br>You decide.</p></div>' + // vocab-lint-ignore — ratified brand line, L1-02 §514
-    '<div><p class="para">Getaway Collective is an investment platform for collective ownership of exceptional retreats in India. We structure each estate as its own LLP, govern it on behalf of its partners, and hold no equity in any of them. We are builders, not brokers.</p><a class="btn dark" href="/about">Learn more</a></div></section>';
+    '<div><p class="para">Getaway Collective sets up each estate as its own partnership, keeps its records and runs its votes for the partners. We own none of any estate. NAVINA Structures forms each partnership, and Sensory Getaways runs the estates.</p><a class="btn dark" href="/about">Who we are</a></div></section>';
   return <Mount html={html} />;
 }
 
