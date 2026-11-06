@@ -21,19 +21,19 @@ export const PAGES: Record<string, SitePage> =  {
    "coast",
    18.4
   ],
-  "lead": "Getaway Collective creates remarkable places in India and holds each one in its own LLP, owned by its partners and governed in the open.",
+  "lead": "Getaway Collective is a brand of NAVINA Structures Pvt Ltd. We bring partners together to own individual places in India. Each place is held in its own LLP, owned by its partners and governed in the open.",
   "blocks": [
    {
-    "h": "What we are"
+    "h": "What we do"
    },
    {
-    "p": "An ownership platform for places worth returning to. Each place is a single asset in its own LLP. Its partners own it, and we govern it for them."
+    "p": "NAVINA forms each LLP, invites its partners, keeps the register and reports to them. Sensory Getaways runs the place. The promoters invest alongside you."
    },
    {
     "h": "Why it exists"
    },
    {
-    "p": "A second home is bought on one number and held on many. We built a structure that answers all of them: one place, one LLP that owns it, and records every partner can read."
+    "p": "A second home is bought on one number and held on many: upkeep, insurance, staff, use, and what happens when you want to sell. We built a structure that answers each of them. One place. One LLP that owns it. Records every partner can read."
    },
    {
     "src": "about.tsx 104–123 · copy GC-19-CT-001 R4"
@@ -44,16 +44,10 @@ export const PAGES: Record<string, SitePage> =  {
    {
     "list": [
      "Each estate's capital stays in that estate.",
-     "Every figure is shown with its basis.",
+     "Every figure is shown with its basis and its date.",
      "Nights come with ownership.",
-     "What reaches the partners is theirs alone."
+     "What reaches partners goes to partners."
     ]
-   },
-   {
-    "q": "Modern luxury is defined not by excess, but by the absence of noise."
-   },
-   {
-    "src": "L1-01 125–128, the axiom of the Architecture of Silence"
    },
    {
     "h": "Three parties, each with one role"
@@ -115,7 +109,7 @@ export const PAGES: Record<string, SitePage> =  {
  },
  "how": {
   "key": "how",
-  "eyebrow": "How it works",
+  "eyebrow": "Ownership",
   "title": "One estate. <span>One LLP.</span>",
   "film": [
    "cff",
@@ -123,11 +117,8 @@ export const PAGES: Record<string, SitePage> =  {
    0,
    1
   ],
-  "lead": "Every estate is a single asset held in its own special purpose vehicle (SPV), in the form of a limited liability partnership (LLP). The LLP owns the land and the buildings. Its partners own the LLP, in proportion to their units.",
+  "lead": "Every estate is a single asset in its own LLP. The LLP owns the land and the buildings. Its partners own the LLP, in proportion to their units. This page explains what that gives you, who is behind it, where the money goes and how decisions are made.",
   "blocks": [
-   {
-    "q": "Modern luxury is the absence of noise."
-   },
    {
     "h": "Why an LLP"
    },
@@ -145,18 +136,21 @@ export const PAGES: Record<string, SitePage> =  {
    {
     "rows": [
      [
-      "NAVINA Structures Pvt Ltd, as Getaway Collective",
-      "Getaway Collective is NAVINA's brand. NAVINA forms each estate's LLP, holds your deposit as a fiduciary until you are admitted, then keeps the register and the records, runs the votes and reports to partners. It holds no equity, and is paid from one disclosed stage of revenue."
+      "NAVINA Structures Pvt Ltd",
+      "Getaway Collective is NAVINA's brand. NAVINA forms each estate's LLP and holds your deposit as a fiduciary until you are admitted. It then keeps the register and the records, runs the votes and reports to partners. It holds no equity. Each estate's page names the stage of revenue it is paid from."
      ],
      [
       "The promoters",
-      "Nikhil Deshpande and Shirisha Avanchi, NAVINA's directors and shareholders, invest in each estate in their own names: the same units, on the same terms, paid at the same stage as you."
+      "Nikhil Deshpande and Shirisha Avanchi, NAVINA's directors and shareholders, invest in each estate in their own names: the same units, on the same terms, paid at the same stage as other partners."
      ],
      [
       "Sensory Getaways",
-      "Runs each estate for its partners: the guests, the staff and the upkeep, measured on agreed service levels."
+      "Runs each estate under a Commercial Services Agreement with its LLP. Partners can replace it under the operating agreement."
      ]
     ]
+   },
+   {
+    "p": "How the parties are connected is set out in the <a class=\"tx-u\" href=\"/legal/disclosures\">Disclosures</a>."
    },
    {
     "h": "Where your money goes"
@@ -186,7 +180,7 @@ export const PAGES: Record<string, SitePage> =  {
      ],
      [
       "money",
-      "Where the money goes"
+      "The order of payment"
      ],
      [
       "decide",
@@ -200,13 +194,13 @@ export const PAGES: Record<string, SitePage> =  {
     "id": "own"
    },
    {
-    "p": "A unit is a fixed share of one estate's LLP. Each estate sets how large a share a unit is, what it costs and how many one partner may hold. Your units give you three things, in proportion to their number: a share of distributions, a vote, and nights at the estate."
+    "p": "A unit is a fixed share of one estate's LLP. Your units give you three things, in proportion to their number: a share of distributions, a vote and nights at the estate. Each estate sets its own unit size, its price and the most one partner may hold. Examples, as proposed:"
    },
    {
     "units": true
    },
    {
-    "p": "The equity belongs to the partners. What Getaway Collective does at each estate, and what it is paid, are stated in that estate's own terms."
+    "p": "See each estate's own page for its own figures. The equity belongs to the partners; what Getaway Collective does at each estate, and what it is paid, are stated in that estate's own terms."
    },
    {
     "src": "constants/vehicles.ts offering, ladder · legal.ts 132"
@@ -228,17 +222,17 @@ export const PAGES: Record<string, SitePage> =  {
     "src": "public.ts 310–322 · content/member.ts"
    },
    {
-    "h": "<span class=\"tx-ch\">Chapter 3</span>Where the money goes",
+    "h": "<span class=\"tx-ch\">Chapter 3</span>The order of payment",
     "id": "money"
    },
    {
-    "p": "Revenue flows through six stages, in order. Each is a share of gross revenue, and together they make exactly 100%. There is one class of unit, so every partner is paid the same way, with no preferred return, catch-up or performance fee."
+    "p": "Every estate's revenue pays the same kinds of people in a fixed order, each in full before the next. First the operator. Then the house brand and the platform, the reserves and the bank where there is a loan. The partners come last. Every unit is the same class, so every partner, including the promoters, is paid the same way, from what remains. The shares differ by estate. One example, Seaside Confluence, as modelled:"
    },
    {
     "da": "wftable"
    },
    {
-    "p": "Streamside Creek sets out its own order of payment, with the bank first; <a class=\"tx-u\" href=\"/collection/coorg-coffee-creek#capital\">its page shows the order</a>."
+    "p": "Streamside Creek sets out its own order, with the bank first. <a class=\"tx-u\" href=\"/collection/coorg-coffee-creek#capital\">Its page shows the order</a>. The order is also called the waterfall."
    },
    {
     "p": "The same shares, drawn and applied to each estate's modelled revenue, as an illustration."
@@ -275,7 +269,7 @@ export const PAGES: Record<string, SitePage> =  {
     "id": "decide"
    },
    {
-    "p": "<b class=\"tx-strong\">Deciding.</b> Votes are weighted by holding. Every resolution is recorded in a register that only grows: a correction is a new entry."
+    "p": "<b class=\"tx-strong\">Deciding.</b> Votes are weighted by what each partner holds. Every resolution is recorded in a register that only grows: a correction is a new entry. Each estate's page shows its thresholds and where the votes sit."
    },
    {
     "da": "vote"
@@ -284,7 +278,7 @@ export const PAGES: Record<string, SitePage> =  {
     "src": "public.ts 932–938 · AGENTS.md 115 · Rule 11"
    },
    {
-    "p": "<b class=\"tx-strong\">Using the estate.</b> Nights come with ownership: one night a year for each 1% of the estate you hold, from handover. A 10% holding brings ten nights. Each offering letter confirms it."
+    "p": "<b class=\"tx-strong\">Using the estate.</b> From handover, one night a year for each 1% held, as proposed. How busy dates are shared is set by each estate's own rules."
    },
    {
     "da": "position"
@@ -293,7 +287,7 @@ export const PAGES: Record<string, SitePage> =  {
     "src": "public.ts 184 · founder ruling, 6 Oct 2026"
    },
    {
-    "p": "<b class=\"tx-strong\">Leaving.</b> After the lock-in, you offer your units on a private noticeboard, which fellow partners see first. A sale is agreed between partners, at a price they settle."
+    "p": "<b class=\"tx-strong\">Leaving.</b> After the lock-in, you offer your units to the other partners first. There is no public market, and the price is agreed between partners."
    },
    {
     "src": "public.ts 330–333"
@@ -327,9 +321,9 @@ export const PAGES: Record<string, SitePage> =  {
  "enquire": {
   "key": "contact",
   "light": 1,
-  "eyebrow": "Enquire",
-  "title": "Ask anything <span>about the structure.</span>",
-  "lead": "Investor Relations replies on working days, in writing. Anything about committing capital continues by email or in the portal, so there is a record.",
+  "eyebrow": "Contact",
+  "title": "Contact <span>Investor Relations.</span>",
+  "lead": "Ask about an estate, the structure or your application. Investor Relations replies in writing, on working days. Anything about committing capital continues in writing so there is a record.",
   "blocks": [
    {
     "rows": [
@@ -359,11 +353,11 @@ export const PAGES: Record<string, SitePage> =  {
      "id": "enq",
      "steps": true,
      "addr": "ir@getawaycollective.co",
-     "chipsLabel": "I'm asking about",
+     "chipsLabel": "Choose what you are asking about",
      "chips": [
-      "The structure",
-      "A specific estate",
-      "Accreditation",
+      "An estate",
+      "The ownership structure",
+      "My application",
       "The offering pack",
       "Press"
      ],
@@ -399,7 +393,7 @@ export const PAGES: Record<string, SitePage> =  {
      ],
      "submit": "Send to Investor Relations",
      "ok": "Received. Investor Relations will reply to you in writing. Nothing about capital is decided by email alone.",
-     "note": "Capital is at risk; read the Terms, Part L, before committing."
+     "note": "This starts a conversation. It holds no unit and costs nothing."
     }
    }
   ],
@@ -413,7 +407,7 @@ export const PAGES: Record<string, SitePage> =  {
    "nine",
    9
   ],
-  "lead": "Weekly intelligence on solitude and assets. One transmission, no more.",
+  "lead": "A weekly note on places and ownership. You can leave at any time. We do not sell the list.",
   "blocks": [
    {
     "rows": [
@@ -469,6 +463,9 @@ export const PAGES: Record<string, SitePage> =  {
     }
    },
    {
+    "p": "Subscribing is separate from project updates: choosing one does not enrol you in the other."
+   },
+   {
     "src": "public.ts 241–242"
    }
   ],
@@ -482,7 +479,7 @@ export const PAGES: Record<string, SitePage> =  {
    "nine",
    8.5
   ],
-  "lead": "Sleep at the trailhead. The key is not the destination; it is where you return from the hill.",
+  "lead": "Sleep at the trailhead.",
   "blocks": [
    {
     "rows": [
@@ -523,7 +520,7 @@ export const PAGES: Record<string, SitePage> =  {
     "src": "NIN CLAUDE.md · NIN-00-CN-001 · properties.yaml 147–165"
    },
    {
-    "p": "Nothing about Nine Hills is offered. It is shown so its place in the collection is visible, and it will arrive with its own offering letter."
+    "p": "A concept: 12 to 20 studios planned on about 5 acres, 2 of them buildable, 220 km from Bengaluru. Still open: title, survey, forest status, trek permissions and the house brand."
    },
    {
     "links": [

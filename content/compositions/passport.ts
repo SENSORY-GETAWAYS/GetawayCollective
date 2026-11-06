@@ -60,7 +60,8 @@ const ROWS: readonly StageRow[] = [
       { id: "horizon", label: "Investment horizon, in years" },
       { id: "share", label: "Share of your investable assets this would represent", help: "A percentage. There is no right answer; there is an honest one." },
     ],
-    note: "A commitment here is illiquid for 36 months and depends on a property that is not yet built. " +
+    note: "Each estate states its own lock-in. Seaside Confluence: 36 months from financial close. Streamside Creek: not yet set; the proposed term is a right of first offer to the other partners. " +
+          "Units cannot move during the lock-in. After it, you offer them to the other partners first. There is no public market. " +
           "Suitability is about whether that shape fits your life, not whether you can afford it." },
   { slug: "risk-profile", n: 8, t: "Risk profile", what: "What losses you can carry, in your own words.",
     fields: [

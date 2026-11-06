@@ -194,7 +194,7 @@ export function FORM(f: FormSpec, plain = false) {
     body +
     /* Said only once the server has confirmed it (behaviour.tsx): a
        confirmation shown on anything less is a promise the site cannot keep. */
-    `<p class="tx-ok" role="status" tabindex="-1" hidden>${f.ok}</p><p class="tx-err" role="alert" hidden data-addr="${f.addr}">That did not go through. Write to <span class="mono sel">${f.addr}</span> and it will reach the same desk.</p>` +
+    `<p class="tx-ok" role="status" tabindex="-1" hidden>${f.ok}</p><p class="tx-err" role="alert" hidden data-addr="${f.addr}" data-msg="${(f.err ?? `We could not send this. Your answers are kept on this page. Try again, or write to ${f.addr}.`).replace(/"/g, "&quot;")}">${(f.err ?? `We could not send this. Your answers are kept on this page. Try again, or write to ${f.addr}.`).split(f.addr).join(`<span class="mono sel">${f.addr}</span>`)}</p>` +
     `<p class="tx-src">${f.note}</p></form>`;
 }
 
@@ -231,7 +231,7 @@ export function WAIT(E: SiteEstate, R: Reading | undefined) {
     `<span class="sold-chip">${W.chip}</span><h2 class="h2">${W.title}</h2><p class="para dim">${fill(W.text, t)}</p>` +
     FORM({ id: `${E.key}-wl`, addr: "ir@getawaycollective.co", chipsLabel: "Units you would take", chips: W.chips,
       fields: [["Name", "text", "name"], ["Email", "email", "email"], ["Anything we should know", "area"]],
-      submit: "Join the waitlist", ok: W.ok, note: W.note, to: "dossier", vehicle: E.slug }, true) +
+      submit: "Join the waitlist", ok: W.ok, err: "We could not add you to the list. Please try again, or write to ir@getawaycollective.co.", note: W.note, to: "dossier", vehicle: E.slug }, true) +
     "</div></section>";
 }
 

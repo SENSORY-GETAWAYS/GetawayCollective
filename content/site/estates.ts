@@ -1109,14 +1109,14 @@ export const ESTATES: Record<string, SiteEstate> = {
   "ownAnswers": true,
   "waitlist": {
    "chip": "FULLY SUBSCRIBED",
-   "title": "Join the <span>waitlist.</span>",
-   "text": "Every unit offered in {{vehicle}} is held. If, after the lock-in, a partner offers units for sale, the waitlist hears first, in the order it was joined. Joining commits you to nothing.",
+   "title": "Join the Seaside Confluence <span>waitlist.</span>",
+   "text": "Seaside Confluence is fully subscribed. Join the list and we will write if units become available, in the order people joined.",
    "chips": [
     "1 unit",
     "2 units",
     "3 or more"
    ],
-   "ok": "You are on the Confluence waitlist. Investor Relations will write when a partner offers units for sale.",
+   "ok": "You are on the Seaside Confluence waitlist. We will write to you if units become available.",
    "note": "Any sale is at a price buyer and seller agree. A buyer from outside the partnership needs the partners' consent."
   },
   "slug": "slowspace-coastal",
@@ -1168,7 +1168,7 @@ export const ESTATES: Record<string, SiteEstate> = {
   },
   "concept": {
    "title": "Five clusters, <span>set down along a stream.</span>",
-   "lead": "A descent from the road to the water. Four keys share one thin roof and three party walls; the yard and a private pool sit below, in the shade of the keys above. Five of these are placed on the contour, and the coffee on both banks is left standing.",
+   "lead": "A descent from the road to the water. Four studios share one thin roof and three party walls; the yard and a private pool sit below, in the shade of the studios above. Five of these are placed on the contour, and the coffee on both banks is left standing.",
    "img": "creek/masterplan",
    "zones": [
     {
@@ -1182,21 +1182,21 @@ export const ESTATES: Record<string, SiteEstate> = {
      "k": "slope",
      "name": "Four clusters",
      "sub": "Down the slope",
-     "text": "Sixteen keys in four clusters along the contour, joined by one walk.",
+     "text": "Sixteen studios in four clusters along the contour, joined by one walk.",
      "c": "{ink:canopy}"
     },
     {
      "k": "water",
      "name": "The fifth cluster",
      "sub": "At the water",
-     "text": "Four more keys, reached by a timber crossing over the stream.",
+     "text": "Four more studios, reached by a timber crossing over the stream.",
      "c": "{ink:river}"
     },
     {
      "k": "apart",
      "name": "The sauna and the lake",
      "sub": "Set apart",
-     "text": "Quietly apart from the keys, at the water's edge.",
+     "text": "Quietly apart from the studios, at the water's edge.",
      "c": "{ink:sage}"
     },
     {
@@ -1255,7 +1255,7 @@ export const ESTATES: Record<string, SiteEstate> = {
       "s": "One long table, beside the court"
      }
     ],
-    "so": "The first ten minutes are drawn as carefully as the key itself."
+    "so": "The first ten minutes are drawn as carefully as the studios themselves."
    },
    {
     "id": "cluster",
@@ -1266,13 +1266,13 @@ export const ESTATES: Record<string, SiteEstate> = {
      0
     ],
     "img": "creek/cluster",
-    "para": "Four keys share one thin roof and three party walls. They stand three metres past the fall of the slope, and beneath them the yard and a private pool lie in shade. In the wet months the cantilever becomes the shelter.",
+    "para": "Four studios share one thin roof and three party walls. They stand three metres past the fall of the slope, and beneath them the yard and a private pool lie in shade. In the wet months the cantilever becomes the shelter.",
     "meta": [],
     "cards": [
      {
       "img": "creek/cluster-west",
       "b": "Under one roof",
-      "s": "Four keys, three party walls"
+      "s": "Four studios, three party walls"
      },
      {
       "k": "The slope",
@@ -1281,7 +1281,7 @@ export const ESTATES: Record<string, SiteEstate> = {
      {
       "img": "creek/yard",
       "b": "The yard",
-      "s": "In the shade of the keys above"
+      "s": "In the shade of the studios above"
      },
      {
       "k": "Five clusters",
@@ -1306,14 +1306,14 @@ export const ESTATES: Record<string, SiteEstate> = {
    },
    {
     "id": "key",
-    "title": "The key",
+    "title": "The studios",
     "film": [
      "creek",
      15,
      0
     ],
     "img": "creek/keys-plan",
-    "para": "One key, drawn once and built twenty times. Yard, bath, bed, living and a deck with a plunge, in one line, with a nest above the bath. A ladder inside, and no stair outside.",
+    "para": "One design, drawn once and built twenty times. Yard, bath, bed, living and a deck with a plunge, in one line, with a nest above the bath. A ladder inside, and no stair outside.",
     "meta": [],
     "cards": [
      {
@@ -1327,7 +1327,7 @@ export const ESTATES: Record<string, SiteEstate> = {
      },
      {
       "k": "The plunge",
-      "v": "On the deck of every key"
+      "v": "On every deck"
      },
      {
       "img": "creek/cluster-plan",
@@ -1394,13 +1394,13 @@ export const ESTATES: Record<string, SiteEstate> = {
    [
     "Sound",
     "NC-25 at night",
-    "Each key is tested for it before anyone sleeps there.",
+    "All twenty studios are tested for it before anyone sleeps there.",
     "{ink:canopy}"
    ],
    [
     "Dark",
     "0.5 lux or less",
-    "Blackout, measured, in every key.",
+    "Blackout, measured, in all twenty studios.",
     "{ink:coal}"
    ],
    [
@@ -1410,7 +1410,7 @@ export const ESTATES: Record<string, SiteEstate> = {
     "{ink:oat}"
    ],
    [
-    "One key",
+    "One design",
     "465 sq ft, enclosed",
     "3.6 m wide on a 600 mm grid. Drawn once, built twenty times.",
     "{ink:bone}"
@@ -1440,7 +1440,7 @@ export const ESTATES: Record<string, SiteEstate> = {
     [
      "MIDDAY",
      "The yard and the pool",
-     "In shade, under the keys."
+     "In shade, under the studios."
     ],
     [
      "DUSK",
@@ -1567,8 +1567,8 @@ export const ESTATES: Record<string, SiteEstate> = {
      ]
     },
     {
-     "tab": "A key",
-     "t": "A key",
+     "tab": "The studios",
+     "t": "The studios",
      "img": "creek/keys-plan",
      "svg": "",
      "rows": [
@@ -1653,7 +1653,7 @@ export const ESTATES: Record<string, SiteEstate> = {
    ],
    [
     "The build cost",
-    "A measured bill, a fixed ceiling, and one key repeated twenty times."
+    "A measured bill, a fixed ceiling, and one design repeated twenty times."
    ],
    [
     "Too few nights sold",
@@ -1679,7 +1679,7 @@ export const ESTATES: Record<string, SiteEstate> = {
    ],
    [
     "Clusters",
-    "Five, of four keys each, with one pool a cluster"
+    "Five, of four studios each, with one pool a cluster"
    ],
    [
     "Key",
@@ -2317,8 +2317,8 @@ export const FAQX: Record<string, [string, string, string][]> = {
    "CRK-09-CA-006 WATERFALL"
   ],
   [
-   "Is the bank loan in place?",
-   "No. A loan of up to ₹10 Cr has been applied for, to be drawn against certified works, interest-only for the eighteen months of the build and then repaid in 120 level monthly instalments. It is not sanctioned: the sanction follows the title report and the valuation. Nothing on this page says it is secured.",
+   "Where does the bank loan stand?",
+   "A loan of up to ₹10 Cr is applied for, and ₹8.36 Cr of it is in the plan. It would be drawn against certified works. It would be interest-only for the 18 months of the build, then repaid in 120 level monthly instalments. The sanction follows the title report and the valuation, and nothing has been drawn.",
    "CRK-09-CT-001 L-02, L-04, L-05, L-13"
   ],
   [
@@ -2332,8 +2332,8 @@ export const FAQX: Record<string, [string, string, string][]> = {
    "properties.yaml"
   ],
   [
-   "When does it open?",
-   "No opening date has been set, and this page will not guess one. Nothing is built yet. The plan allows eighteen months to build once works begin, and works begin only after the gates before them have closed.",
+   "When will it open?",
+   "No date is set. The plan allows 18 months to build once works begin, and works begin after the approvals and the loan are in place. This page shows each step as it closes.",
    "CRK-09-CA-006 LOAN"
   ]
  ],

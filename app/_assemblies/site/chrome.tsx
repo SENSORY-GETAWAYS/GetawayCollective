@@ -38,7 +38,7 @@ export function SiteSymbols() {
 
 const NAV = [
   /* 15 Oct 2026 (audit, section 3): what a visitor looks for, in that order. Team sits under About and in the footer. */
-  ["/collection", "Estates"], ["/how-it-works", "Ownership"], ["/how-to-qualify", "How to join"], ["/journal", "Journal"], ["/about", "About"],
+  ["/collection", "Estates"], ["/how-it-works", "Ownership"], ["/how-to-qualify", "How to join"], ["/about", "About"], ["/journal", "Journal"],
 ] as const;
 
 /**
@@ -175,7 +175,7 @@ export function SiteNav() {
       <button ref={btn} type="button" className="nav-menu" aria-expanded={open} aria-controls="site-menu" onClick={() => setOpen((o) => !o)}>
         {open ? "Close" : "Menu"}
       </button>
-      <Link className="btn btn-s nav-enq" href="/contact">Enquire</Link>
+      <Link className="btn btn-s nav-enq" href="/contact"><span className="enq-wide">Contact Investor Relations</span><span className="enq-narrow">Contact</span></Link>
       <div ref={panel} id="site-menu" className="nav-panel" hidden={!open}>
         <nav aria-label="Menu">
           {NAV.map(([href, label]) => (
@@ -215,13 +215,13 @@ export function SiteFooter() {
         </div>
         <div>
           <span className="eb">Contact</span>
-          <Link href="/contact">Enquire</Link><Link href="/collection/seaside-confluence#waitlist">Seaside Confluence waitlist</Link>
+          <Link href="/contact">Contact Investor Relations</Link><Link href="/collection/seaside-confluence#waitlist">Seaside Confluence waitlist</Link>
           <Link href="/sign-in">Sign in</Link>
           <span className="mono sel foot-addr">ir@getawaycollective.co</span>
         </div>
         <div className="sub">
           <span className="eb">The Signal</span>
-          <p className="para foot-p">A weekly note. No tracking pixel, and the list is never sold.</p>
+          <p className="para foot-p">The Signal. A weekly note on places and ownership. You can leave at any time. We do not sell the list.</p>
           <div><Link className="btn" href="/signal">Subscribe</Link></div>
         </div>
       </div>
@@ -229,9 +229,9 @@ export function SiteFooter() {
         <Mark size={34} />
         <div>
           <div className="triad">
-            <span><b>Getaway Collective</b> governs the vehicles and holds no equity in them.</span>
-            <span><b>One LLP per property</b>, owned by its partners.</span>
-            <span><b>Sensory Getaways</b> operates the properties under contract.</span>
+            <span><b>Getaway Collective</b> is a brand of NAVINA Structures Pvt Ltd.</span>
+            <span>Each estate is held in <b>its own LLP</b>, owned by its partners.</span>
+            <span><b>Sensory Getaways</b> runs the estates under contract.</span>
           </div>
           {/* Copy review R1, 20 Oct 2026: the one risk line, once per page, in place of every repetition. */}
           <p className="foot-risk">Investing involves risk. Please read the <Link href="/legal/risk-disclosure">risk disclosure</Link> before you decide.</p>

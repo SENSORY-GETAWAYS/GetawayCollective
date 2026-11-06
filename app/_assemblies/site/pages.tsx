@@ -107,7 +107,7 @@ export function SiteHome() {
     '<span class="plate-tag hero-tag">Illustration · unbuilt</span>' +
     '<h1 class="hp">Own a share of <span>a retreat in India.</span></h1>' +
     '<div class="hero-foot"><span></span>' +
-    '<div class="hero-own"><p>Each retreat is a single asset, held in its own LLP, and you are invited to join it as a partner. An operating partner runs the place. All of it belongs to its partners.</p>' +
+    '<div class="hero-own"><p>Getaway Collective brings partners together to own individual retreats in India.</p><p>Each retreat is held in its own LLP (a limited liability partnership), and you are invited to join it as a partner. A hospitality operator runs the place. The partners own all of it.</p>' +
     `<div class="hero-act"><a class="btn lead" href="/collection">Explore the collection ${NE}</a><a class="hero-link" href="/how-it-works">How ownership works</a><button type="button" class="hero-link hero-play" hidden>Play the film</button></div>` +
     '</div></div></section>' +
     /* The manifesto is read, not revealed a word at a time. */
@@ -132,14 +132,15 @@ export function SiteHome() {
     `<section class="ref"><div>${plate("solace/mist", { sizes: "(max-width: 700px) 100vw, 34vw", tag: "none" })}</div><div>${plate("creek/water", { sizes: "(max-width: 700px) 100vw, 34vw", tag: "none" })}</div><div>${plate("cff/fire", { sizes: "(max-width: 700px) 100vw, 34vw", tag: "none" })}</div>` +
     '<div class="mid"><div><span class="eb">What you own</span><b>ONE ESTATE, ONE LLP</b><p class="para para-s">Units in the partnership that owns the land and the buildings. Partners decide together, each vote weighted by what they hold. One operating partner runs every estate.</p><a class="btn" href="/how-it-works">How ownership works</a></div></div></section>' +
     /* Copy review R1: the structure the whole site rests on, stated once. */
-    '<section class="spv gr-sage"><div class="center gut"><span class="eb">The structure</span><h2 class="h2">One asset. <span>Its own LLP.</span></h2>' +
-    '<p class="para">Each estate is a single asset held in its own special purpose vehicle (SPV): an entity formed for that one estate and nothing else. The SPV takes the form of a limited liability partnership (LLP), and the LLP gives its partners four things. It is a legal entity in its own right. It owns the land and the buildings in its own name, signs its own contracts and keeps its own accounts. Each partner&rsquo;s liability is limited to what they agreed to contribute. It continues unchanged as partners join or leave. And because it holds one estate only, that estate&rsquo;s money and obligations remain inside it.</p>' +
-    '<p class="para">The LLP is owned exclusively by its partners, a small circle of individuals invited to join. You join by buying units; each unit is a fixed share of the LLP, and of everything it owns.</p></div></section>' +
+    /* Card #9 (GC-18, founder, 6 Nov 2026): four numbered steps in place of the long block. */
+    '<section class="spv gr-sage"><div class="center gut"><span class="eb">The structure</span><h2 class="h2">How one estate <span>is held</span></h2>' +
+    '<ol class="spv-steps"><li>Partners buy units in the estate&rsquo;s LLP. The promoters hold units too, on the same terms.</li><li>The LLP owns the land and the buildings, in its own name.</li><li>NAVINA Structures Pvt Ltd forms the LLP, keeps its register and reports to partners.</li><li>Sensory Getaways runs the estate under contract to the LLP.</li></ol>' +
+    '<p class="spv-act"><a class="btn" href="/how-it-works">See how ownership works</a></p></div></section>' +
     /* Wave 1, GC-19-CT-001 R4 (founder, 23 Oct 2026): who it suits and who is
        behind it, in the investor's words. Figures from the register; Solace's
        remain private (6 Oct ruling). */
     '<section class="fit gr-pine"><div class="fit-h"><span class="eb">Who it suits</span><h2 class="h2">Ownership for people who want <span>to hold something real.</span></h2></div><dl class="fit-grid">' +
-    '<div><dt>Capital you can set aside</dt><dd>Units are held for the estate&rsquo;s lock-in, 36 months at most estates, and then offered to fellow partners first.</dd></div>' +
+    '<div><dt>Capital you can set aside</dt><dd>Each estate sets its own lock-in. At Seaside Confluence it is 36 months from financial close. After it, you offer your units to fellow partners first.</dd></div>' +
     '<div><dt>One place, not a portfolio</dt><dd>You own a share of one estate you can visit, with its own accounts.</dd></div>' +
     '<div><dt>A say in it</dt><dd>Partners decide together, each vote weighted by what they hold.</dd></div>' +
     '<div><dt>Nights of your own</dt><dd>One night a year for each 1% you hold, from handover.</dd></div>' +
@@ -149,6 +150,11 @@ export function SiteHome() {
     `<div><dt>The promoters</dt><dd>Nikhil Deshpande and Shirisha Avanchi, NAVINA&rsquo;s directors and shareholders, invest alongside you in their own names: the same units, on the same terms, paid at the same stage, so their money rises and falls with yours.${stakes ? ` ${stakes}.` : ""}</dd></div>` +
     '<div><dt>Sensory Getaways</dt><dd>Runs each estate: the guests, the staff and the upkeep. It is measured on agreed service levels and answers to the partners&rsquo; vote.</dd></div>' +
     '</dl></section>' +
+    /* Card #12 (GC-18): what to check before joining. The card links each item to the estate's Terms and
+       economics page; there is no single page for that, so the heading links to the collection. */
+    '<section class="fit chk gr-tide"><div class="fit-h"><span class="eb">Before you decide</span><h2 class="h2"><a class="chk-h" href="/collection">What to check <span>before you join an estate</span></a></h2></div>' +
+    '<ol class="chk-list"><li>Land and approvals</li><li>Control: who decides, and by what share</li><li>Costs and payouts: who is paid before the partners</li><li>Nights: when they start and how they are shared</li><li>Transfer: the lock-in and how units move</li><li>If the project changes: delay, cost, loan or funding</li></ol>' +
+    '<p class="para para-s">Each estate&rsquo;s own page sets these out. <a class="tx-u" href="/collection">Choose an estate to read them</a>.</p></section>' +
     // ── four estates, up close ──
     '<div class="explore-h"><span class="eb">The collection</span><h2 class="h2">Seven estates, <span>and where each one stands.</span></h2></div>' +
     '<div class="stackfilm">' + HOME_STACK.map((s) =>
@@ -174,12 +180,12 @@ export function SiteHome() {
     "</div></section>" +
     (pack
       ? `<section class="pack"><div class="col">${imgOf(`/collection/${pack.vehicle.slug}`) ? plate(imgOf(`/collection/${pack.vehicle.slug}`)!, { sizes: "(max-width: 900px) 100vw, 52vw" }) : film("creek", 12, { bp: true })}</div><div class="tx"><span class="eb">The offering pack</span>` +
-        `<h2 class="h2 h2-s">Get the <span>${esc(pack.name)} offering pack</span></h2>` +
-        `<p class="para dim">The drawings, the structure of ${esc(pack.vehicle.registeredName)}, ${pack.vehicle.operating.cascade?.length ? "the order of payment" : "the waterfall"} and the risk disclosure, in one document. Sent after a short qualification.</p>` +
+        `<h2 class="h2 h2-s">${esc(pack.name)}: <span>the proposal in one document</span></h2>` +
+        `<p class="para dim">The drawings, the structure of the LLP, the order of payment and the risk disclosure. Investor Relations sends it after a short conversation.</p>` +
         `<div><a class="btn lead" href="/collection/${pack.vehicle.slug}/enquire?about=pack">Request the pack ${NE}</a></div></div></section>`
       : "") +
     '<section class="who"><div><span class="eb">Who we are</span><p class="q"><b>You own.</b> We steward.<br>You decide.</p></div>' + // vocab-lint-ignore — ratified brand line, L1-02 §514
-    '<div><p class="para">Getaway Collective forms each retreat as its own LLP, invites its partners and governs it for them. All the equity belongs to the partners. We are paid from one disclosed stage of the estate&rsquo;s revenue.</p><a class="btn dark" href="/about">Learn more</a></div></section>';
+    '<div><p class="para">Getaway Collective is a brand of NAVINA Structures Pvt Ltd. NAVINA forms each retreat&rsquo;s LLP, invites its partners and governs it for them. The promoters, Nikhil Deshpande and Shirisha Avanchi, are NAVINA&rsquo;s directors and shareholders and invest in each estate in their own names. NAVINA holds no equity in any estate.</p><a class="btn dark" href="/about">Learn more</a></div></section>';
   return <Mount html={html} />;
 }
 
@@ -275,7 +281,7 @@ export function SiteCollection() {
   ];
   const open: Group | "all" = counts.raising ? "raising" : "all";
   const html =
-    '<div class="col-head"><h1>Our estates</h1><p class="para col-lead">Seven estates in Karnataka, each a single asset in its own LLP. One is open to new partners today.</p></div>' +
+    '<div class="col-head"><h1>Seven estates in Karnataka.</h1><p class="para col-lead">Each is a single asset in its own LLP. Choose by where it stands today.</p></div>' +
     '<div class="filters"><div class="fl" role="group" aria-label="Filter"><span class="fl-l">Filters:</span><button type="button" aria-pressed="true" data-f="all">All</button><button type="button" aria-pressed="false" data-f="coast">Coast</button><button type="button" aria-pressed="false" data-f="hills">Hills</button><button type="button" aria-pressed="false" data-f="coffee">Coffee country</button></div><span class="fl-sort">Sort: by stage</span></div>' +
     `<div class="subtabs" role="tablist" aria-label="Where each estate stands">${tabs.map(([k, label]) => {
       const n = k === "all" ? cards.length : counts[k];
@@ -350,7 +356,7 @@ export function SiteJournalIndex() {
     key: "journal", path: "/journal", light: 1, eyebrow: "The Journal", title: "Notes from <span>the collective.</span>", lead: "One decision an entry, with what it cost. Every figure quoted here comes from the same record the platform itself runs on.",
     blocks: [
       { jcards: cards, kinds: KIND_LABEL },
-      { h: "The Signal" }, { p: "The Journal arrives once a week as The Signal. No tracking pixel, and the list is never sold." },
+      { h: "The Signal" }, { p: "The Journal arrives once a week as The Signal, a weekly note on places and ownership. You can leave at any time. We do not sell the list." },
       { links: [["Subscribe to The Signal", "/signal", "dark"]] },
     ],
   };
@@ -504,6 +510,17 @@ export function SiteQualify() {
     { h: "What your money does", id: "calculator" },
     /* Wave 1 (founder, 20 Oct): the one risk line lives in the footer; this states what each part is. */
     { p: "Three things come with a share of an estate, each measured on its own. The value of the share itself, which moves with the estate. Distributions, paid from what remains after the estate's costs and any loan, in the order its agreement sets. And nights, a benefit of owning. Each estate's investment page sets out its own figures, modelled from its register, before tax, with the basis for each." },
+    /* Card #59 (GC-18): six terms, defined once, above the full list. */
+    { h: "Six terms, defined once" },
+    { rows: [
+      ["Identity checks", "Confirming who you are. Name, address, tax residency, source of funds, documents and screening."],
+      ["Suitability", "Whether a long-hold, illiquid position fits your situation."],
+      ["Approval", "Investor Relations&rsquo; decision on your application."],
+      ["Allocation", "The number of units set aside for you."],
+      ["Signing", "You sign the LLP agreement. This is the moment you commit."],
+      ["Admission", "You are entered on the LLP&rsquo;s register as a partner."],
+    ] },
+    { p: "The full sixteen-stage list stays below, for anyone who wants it." },
     { h: "Every stage, in full" },
     { html: `<details class="tx-fold"><summary>Read every stage: the path, and KYC alongside it</summary>${stagesHTML}</details>` },
     { h: "What happens to what you enter" },
@@ -555,6 +572,18 @@ export function SiteOperator() {
   /* Wave 2 (founder, 23 Oct 2026): the page opens on what the operator does, not a standfirst. */
   const blocks: Block[] = [];
   for (const pane of O.panes) {
+    /* Card #80 (GC-18): the first pane is four plain steps, not four coded layers. */
+    if (pane.n === "01" && pane.ledger) {
+      blocks.push({ h: "How Sensory Getaways runs an estate, in four steps" });
+      blocks.push({ steps: [
+        ["It hears the request", "A message, a schedule, or nothing at all."],
+        ["It decides what the request means", "What it means for the estate and what it costs."],
+        ["The building responds", "Light, heat, water and access."],
+        ["A person is sent if needed", "If those cannot resolve it, a person is sent."],
+      ] });
+      if (pane.note) blocks.push({ p: pane.note.replace(/^One accountable party, across four layers\. One holder for all four means one party answers for the whole, under contract to each estate's LLP\. /, "One party answers for all four, under contract to each estate's LLP. ") });
+      continue;
+    }
     blocks.push({ h: pane.title });
     if (pane.lede) blocks.push({ p: pane.lede });
     for (const b of pane.body ?? []) blocks.push({ p: b });
@@ -654,19 +683,53 @@ export function SiteChapter({ path, param }: { path: string; param: string }) {
          one is for asking. One link, said before the form. */
       blocks.push({ links: [[`Hold your units · ${rupeesFull(v.offering.deposit)} deposit`, `/reserve/${v.slug}`, "lead"]] });
     }
-    blocks.push({ h: R.stance.kind === "waitlist" ? "Join the waitlist" : "Request the offering pack" });
+    /* Cards #46, #65-#68 (GC-18): three intents on the one template, each with its own words. A forming
+       estate with units still to offer is "updates"; a fully subscribed or funded one is "waitlist"; an
+       open one is "pack". */
+    const pn = esc(name.replace(/<[^>]+>/g, ""));
+    const intent: "pack" | "waitlist" | "updates" = R.stance.kind !== "waitlist" ? "pack" : v.lifecycle === "forming" && v.offering.available > 0 ? "updates" : "waitlist";
+    const W = {
+      pack: {
+        h: `Request the ${pn} pack`,
+        p: "The pack sets out the drawings, the structure of the LLP, the order of payment and the risk disclosure. Investor Relations sends it after a short conversation.",
+        about: "the offering pack", submit: "Request the pack",
+        ok: "Your request is recorded. Investor Relations will write to you with the pack.",
+        err: "We could not record your request. Please try again, or write to ir@getawaycollective.co.",
+        note: "Capital is at risk. Read the Risk Factors before committing.",
+      },
+      waitlist: {
+        h: `Join the ${pn} waitlist`,
+        p: `${pn} is fully subscribed. Join the list and we will write if units become available, in the order people joined.`,
+        about: "joining the waitlist", submit: "Join the waitlist",
+        ok: `You are on the ${pn} waitlist. We will write to you if units become available.`,
+        err: "We could not add you to the list. Please try again, or write to ir@getawaycollective.co.",
+        note: "Capital is at risk. Read the Risk Factors before committing.",
+      },
+      updates: {
+        h: `Get ${pn} updates`,
+        p: `${pn}&rsquo;s LLP is still forming, so there is nothing to subscribe to yet. Leave your name and email and we will write when it opens to partners.`,
+        about: "project updates", submit: "Get updates",
+        ok: `You will hear from us when there is a material update on ${pn}.`,
+        err: "We could not record your email. Please try again.",
+        note: "This records your interest. It holds no unit and costs nothing.",
+      },
+    }[intent];
+    blocks.push({ h: W.h });
+    blocks.push({ p: W.p });
     blocks.push({ form: {
       id: `${v.key}-enq`, addr: "ir@getawaycollective.co",
-      about: `${esc(name.replace(/<[^>]+>/g, ""))} · ${R.stance.kind === "waitlist" ? "joining the waitlist" : "the offering pack"}`,
+      about: `${pn} · ${W.about}`,
       fields: [["Name", "text", "name"], ["Email", "email", "email"], ["City", "text", "address-level2"], ["Anything we should know", "area"]],
-      submit: R.stance.kind === "waitlist" ? "Join the waitlist" : "Request the pack",
-      ok: "Received. Investor Relations will reply to you in writing. Nothing about capital is decided by email alone.",
-      note: "Capital is at risk. Read the Risk Factors before committing.", to: "dossier", vehicle: v.slug,
+      submit: W.submit, ok: W.ok, err: W.err, note: W.note, to: "dossier", vehicle: v.slug,
     } });
   }
   blocks.push({ links: [[`Back to ${name}`, `/collection/${v.slug}`], ["Investment", `/collection/${v.slug}/investment`], ["Risk", `/collection/${v.slug}/risk`], ["Enquire", `/collection/${v.slug}/enquire`, "lead"]] });
   const P: SitePage = {
-    key: `${v.key}-${id}`, path, eyebrow: `${esc(name)} · ${esc(c.eyebrow.replace(/^CHAPTER \d+ · /, ""))}`, title: esc(plain(c.title)), lead: esc(plain(c.lead)),
+    key: `${v.key}-${id}`, path, eyebrow: `${esc(name)} · ${esc(c.eyebrow.replace(/^CHAPTER \d+ · /, ""))}`,
+    /* Card #46 (GC-18): a forming estate is not "fully subscribed"; it says what the form is for. */
+    ...(id === "enquire" && v.lifecycle === "forming" && v.offering.available > 0 && read(v).stance.kind === "waitlist"
+      ? { title: `Get ${esc(name.replace(/<[^>]+>/g, ""))} updates`, lead: "This records your interest. Nothing is offered yet, and nothing is held or paid." }
+      : { title: esc(plain(c.title)), lead: esc(plain(c.lead)) }),
     film: E ? [E.pal, E.enquireHour || 18] : undefined, img: E?.media?.enquire, blocks,
   };
   return <Mount html={fill(TXT(P))} light={!!P.img} />;

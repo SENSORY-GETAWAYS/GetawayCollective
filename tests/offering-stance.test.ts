@@ -160,6 +160,6 @@ describe("the public Coastal page agrees with the register", () => {
 
   it("states the site area the register states", () => {
     expect(SITE.landArea).toBe(coastal.landArea);
-    expect(SITE.landArea).toContain(".3 acres");
+    expect(SITE.landArea).toContain("4.4 acres");
   });
 });

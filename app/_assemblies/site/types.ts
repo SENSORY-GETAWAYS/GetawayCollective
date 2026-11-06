@@ -101,6 +101,8 @@ export interface FormSpec {
   readonly id: string; readonly addr: string; readonly chipsLabel?: string; readonly chips?: readonly string[];
   readonly fields: readonly (readonly (string | readonly string[])[])[];
   readonly submit: string; readonly ok: string; readonly note: string;
+  /** What a send that fails says, where the form has its own words (the site's default otherwise). */
+  readonly err?: string;
   /** Which endpoint receives it. Absent means the enquiry desk. */
   readonly to?: "signal" | "dossier";
   readonly vehicle?: string;

@@ -415,10 +415,10 @@ const SLOWSPACE: Vehicle = {
   assetCode: "PDB-01",
   jurisdiction: "Padubidri, Karnataka",
   coordinates: "13.117416°N · 74.765988°E",
-  /* CONFLICT C-04. The intake says .3 acres; data.ts has carried 1.42
-     acres since the dossier. Transcribed as the intake states it, and
-     the conflict is registered rather than the figure quietly corrected. */
-  landArea: ".3 acres · dual frontage",
+  /* CONFLICT C-04. The intake said .3 acres and data.ts carried 1.42
+     acres since the dossier. Founder ruling, 15 Oct 2026: the site is
+     4.4 acres, which is what the spatial ledger's land profile states. */
+  landArea: "4.4 acres · dual frontage",
   keys: 12,
   /* 15 Oct 2026 (audit GC-03): the approvals are not obtained and the CRZ line
      is not drawn, so nothing is built; it is pre-construction. */
@@ -1083,7 +1083,7 @@ export const CONFLICTS: readonly Conflict[] = [
       "for the same reason as before: this is the vehicle with five of six units already " +
       "subscribed, and somebody has been shown one of these numbers.",
     settledBy:
-      "Settled 20 Sep 2026: 0.3 acres, dual frontage, as the intake and the genesis registry both state. The ledger's land profile and the site dossier are the two that need correcting.",
+      "Settled 20 Sep 2026 at 0.3 acres, dual frontage, as the intake and the genesis registry both stated. Founder ruling, 15 Oct 2026: the site is 4.4 acres, as the ledger's land profile states; the intake sheet and the genesis registry row are the two that need correcting.",
   },
   {
     id: "C-05", vehicle: "solace", severity: "advisory",

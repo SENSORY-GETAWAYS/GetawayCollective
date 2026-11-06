@@ -477,7 +477,7 @@ function goTo(t: HTMLElement, still: boolean) {
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 function fieldError(i: HTMLInputElement): string {
   const v = i.value.trim();
-  if (i.name === "email") return !v ? "Enter your email address." : EMAIL.test(v) ? "" : "Enter an email address like name@example.com.";
+  if (i.name === "email") return !v ? "Enter your email address." : EMAIL.test(v) ? "" : "Enter a full email address, such as name@example.com.";
   if (i.name === "name") return v ? "" : "Enter your name.";
   if (i.name === "phone") return v.replace(/\D/g, "").length >= 8 ? "" : "Enter a mobile number of at least eight digits.";
   return i.required && !v ? "This is needed." : "";
@@ -500,7 +500,7 @@ function validate(scope: ParentNode): boolean {
   return !first;
 }
 const ABOUT: Readonly<Record<string, string>> = {
-  structure: "The structure", estate: "A specific estate", accreditation: "Accreditation", pack: "The offering pack", press: "Press",
+  structure: "The ownership structure", estate: "An estate", accreditation: "My application", pack: "The offering pack", press: "Press",
 };
 /** An enquiry opened for a purpose arrives with it chosen: ?estate=<slug>&about=<topic>. */
 function prefill(root: HTMLElement) {
@@ -853,7 +853,7 @@ export function SiteBehaviour() {
         if (btn) { btn.disabled = true; btn.setAttribute("aria-busy", "true"); btn.textContent = "Sending…"; }
         if (ok) ok.hidden = true; if (err) err.hidden = true;
         const addr = err?.dataset.addr || "ir@getawaycollective.co";
-        const fail = (why: string) => { if (err) { err.textContent = `${why} Write to ${addr} and it will reach the same desk.`; err.hidden = false; } };
+        const fail = (why: string) => { if (err) { /* an empty reason is a plain failure: the form's own words */ err.textContent = why ? `${why} Write to ${addr} and it will reach the same desk.` : (err.dataset.msg || `We could not send this. Your answers are kept on this page. Try again, or write to ${addr}.`); err.hidden = false; } };
         const ctl = new AbortController(), timer = window.setTimeout(() => ctl.abort(), 20000);
         try {
           if (navigator.onLine === false) { fail("You appear to be offline, so nothing was sent."); return; }
@@ -867,9 +867,9 @@ export function SiteBehaviour() {
             if (ok) { ok.hidden = false; ok.focus(); }
           } else if (r.status === 429) fail("Too many sends from this connection in a short time; nothing more was sent. Wait a minute and try again.");
           else if (r.status === 400) fail("The form could not be read, so nothing was sent. Check the email address and try again.");
-          else fail("That did not go through, so nothing was sent.");
+          else fail("");
         } catch (e) {
-          fail((e as Error)?.name === "AbortError" ? "The connection is slow and the send could not be confirmed. It may not have gone through." : "That did not go through, so nothing was sent.");
+          fail((e as Error)?.name === "AbortError" ? "The connection is slow and the send could not be confirmed. It may not have gone through." : "");
         } finally {
           window.clearTimeout(timer);
           if (btn) { btn.disabled = false; btn.removeAttribute("aria-busy"); btn.innerHTML = label; }

@@ -64,11 +64,10 @@ export const SITE = {
   jurisdiction: "Padubidri, Karnataka",
   coords: "13.117416°N · 74.765988°E",
   keys: 12,
-  /* C-04, settled 20 Sep 2026: 0.3 acres, which is what the intake and the
-     spatial ledger's genesis registry both state. 1.42 came from the site
-     dossier and was the figure this page published against a register that
-     said something else. */
-  landArea: ".3 acres · dual frontage",
+  /* C-04. Founder ruling, 15 Oct 2026: the site is 4.4 acres, as the
+     spatial ledger's land profile states. (1.42 came from the site dossier;
+     .3 from the intake sheet and the genesis registry row.) */
+  landArea: "4.4 acres · dual frontage",
   lifecycle: "Pre-construction",
   commitments: "CRZ compliant · Blue Flag adjacent · modular assembly",
   /* Two waters: Arabian Sea west, Shambhavi Estuary east. */

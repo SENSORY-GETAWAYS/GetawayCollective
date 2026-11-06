@@ -186,9 +186,9 @@ export const ESTATES: readonly Estate[] = [
     region: "Mangaluru–Udupi",
     pack: "PACK_COASTAL_ESTUARY",
     /* The 16:20 registry changed this from 4.4 to 0.3, while the same
-       workbook's land profile still reads 4.4. Carried as the registry
-       states it and registered as C-04, unresolved. */
-    siteArea: 0.3,
+       workbook's land profile still reads 4.4. Founder ruling, 15 Oct
+       2026: 4.4 acres (C-04). */
+    siteArea: 4.4,
     buildableEnvelope: 2.3,
     landscapePreserved: "≥65%",
     keys: 12,

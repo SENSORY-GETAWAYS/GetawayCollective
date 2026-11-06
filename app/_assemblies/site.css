@@ -586,6 +586,13 @@
 .site .spv{padding:var(--sec) var(--gut)}
 .site .spv>div{max-width:760px;display:grid;gap:var(--gc-sp-s);text-align:left}
 .site .spv .h2,.site .spv .para{margin:0}
+.site :is(.spv-steps,.chk-list){margin:0;padding:0;list-style:none;display:grid;gap:var(--gc-sp-s);counter-reset:stp}
+.site :is(.spv-steps,.chk-list) li{counter-increment:stp;display:grid;grid-template-columns:2em 1fr;gap:var(--gc-sp-xs);font:500 17px/1.6 var(--text);max-width:60ch}
+.site :is(.spv-steps,.chk-list) li::before{content:counter(stp);font:700 19px/1.4 var(--display)}
+.site .chk-list{grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:var(--gc-sp-m) calc(var(--gc-sp-l) * 1.5)}
+.site .chk-h{color:inherit;text-decoration:none}
+.site .chk-h:hover{text-decoration:underline}
+.site .spv-act{margin:0}
 /* Wave 1 (GC-19-CT-001 R4, 23 Oct 2026): who it suits, who is behind it. Room to breathe:
    one idea a block, generous gaps, no cards or tiles. */
 .site :is(.fit,.parties){padding:calc(var(--sec) * 1.25) var(--gut);display:grid;gap:calc(var(--gc-sp-l) * 1.25)}
@@ -1360,6 +1367,8 @@
 .site .nav-path-bar i{width:6px;height:2px;background:var(--gc-s-rim)}
 .site .nav-path-l{color:var(--gc-s-mute)}
 .site .nav-enq{flex:none}
+.site .enq-narrow{display:none}
+@media (max-width:1180px){.site .enq-wide{display:none}.site .enq-narrow{display:inline}}
 .site .nav-menu{display:none;align-items:center;min-height:38px;padding:0 var(--gc-sp-xs);margin-left:auto;background:none;border:1px solid var(--gc-s-line-2);color:var(--paper);font:600 13.5px var(--text);cursor:pointer}
 .site .nav-menu[aria-expanded=true]{background:var(--paper);color:var(--gc-s-night)}
 .site .nav-panel{position:fixed;left:0;right:0;top:var(--nav-h);bottom:0;z-index:59;overflow-y:auto;display:grid;align-content:start;gap:var(--gc-sp-l);padding:var(--gc-sp-l) var(--gut) calc(var(--gc-sp-l) + env(safe-area-inset-bottom,0px));background:var(--gc-s-night);border-top:1px solid var(--gc-s-rim)}

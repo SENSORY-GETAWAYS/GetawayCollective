@@ -102,6 +102,8 @@ function resolve(pattern: string, p: Readonly<Record<string, string>>): { title?
     if (chapter === "investment") return { title: `Invest in ${name} · Units, price and returns`, description: `The investment in ${name}${at}: how many units, what one costs, how the capital is raised, and the order in which revenue is paid out to partners. Capital is at risk.` };
     if (chapter === "risk") return { title: `${name} · Risk factors before you invest`, description: `What could go wrong at ${name}${at}, stated before anyone is asked for anything: building, demand, the operator, liquidity and the partnership itself.` };
     if (CHAPTER[chapter]) return { title: `${name} · ${CHAPTER[chapter]}`, description: `${CHAPTER[chapter]} for ${name}${at}. Capital is at risk.` };
+    /* Card #27 (GC-18, 6 Nov 2026): Streamside Creek leads with its place and what it is. */
+    if (p.vehicle === "coorg-coffee-creek") return { title: "Streamside Creek, Kodagu · A share of a retreat in coffee country", description: "Twenty studios planned along a stream at Cherala, Kodagu. The proposed terms, what has to happen before the offer opens, and the order of payment, in one place." };
     return { title: where ? `${name}, ${where} · Own a share of a retreat` : name, description: plain(e?.intro) || plain(page?.lead) };
   }
   if (pattern === "/how-to-qualify") return { description: "Own a share of a retreat in three steps: sign in with one email, hold your units with a refundable deposit, and sign, with KYC alongside rather than in the way. And what the same sum does four ways." };
