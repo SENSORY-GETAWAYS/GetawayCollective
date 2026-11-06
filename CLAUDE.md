@@ -74,6 +74,11 @@ Collective, XIS, SG-DS PMO) were consolidated under `C:\DIGITAL` — see
 daily-autonomous-build / human-in-the-loop policy this repo's `npm run
 verify` feeds into.
 
+- Repository and hosting: `github.com/SENSORY-GETAWAYS/GetawayCollective` (moved from
+  `nkdeshpande/GetawayCollective` on 6 Nov 2026), deployed by Vercel project
+  `getaway-collective` in the team `nkdeshpandesensorygetaways` (CLI: `--scope
+  nkdeshpandesensorygetaways`). Pushes to `main` build and deploy; if `/api/health`
+  names a commit older than `origin/main`, Vercel is not building.
 - Dev server: `npm run dev`, port **3000**, via `.claude\launch.json`
   (present both in this folder and mirrored at `C:\DIGITAL\.claude\launch.json`).
 - Local setup: `npm install`, copy `.env.example` → `.env.local`. Needed
