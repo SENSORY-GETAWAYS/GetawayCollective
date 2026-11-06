@@ -328,7 +328,7 @@ export function PROP(E: SiteEstate, R: Reading | undefined, faq: string) {
       `<div class="side"><p class="para">${F(E.place.text)}</p>${coords}</div></div></section>`;
   E.chapters.forEach((c, i) => {
     const meta = c.meta.length ? `<div class="meta">${c.meta.map((m) => `<span>${F(m)}</span>`).join("")}</div>` : "";
-    pl += `<section class="chamber${c.img ? " chamber-day" : ""}" id="${k}-${c.id}"><div class="ttl"><span class="ch-n mono">${String(i + 1).padStart(2, "0")} / ${String(E.chapters.length).padStart(2, "0")}</span><h3>${c.title}</h3></div><div class="film">${c.img ? plate(c.img) : fr(c.film)}</div>` +
+    pl += `<section class="chamber${c.img ? " chamber-day" : ""} ch-${i % 3}${i === E.chapters.length - 1 && i > 0 ? " ch-last" : ""}" id="${k}-${c.id}"><div class="ttl"><span class="ch-n mono">${String(i + 1).padStart(2, "0")} / ${String(E.chapters.length).padStart(2, "0")}</span><h3>${c.title}</h3></div><div class="film">${c.img ? plate(c.img) : fr(c.film)}</div>` +
       (c.img
         ? `<div class="ch-body${c.figs?.length ? "" : " ch-body-1"}"><div><p class="para">${F(c.para)}</p>${soHTML(c.so)}</div>${figsHTML(c.figs)}</div>${meta}`
         : `<p class="para">${F(c.para)}</p>${meta}`) +
@@ -486,6 +486,36 @@ function unitsTable(): string {
 }
 
 // ── the text-page template ──
+/**
+ * COLOUR BANDS — 6 Nov 2026
+ *
+ * Founder: "most pages look very monotonous; bring colour contrast into all
+ * the pages." A long text page ran on one ground from its hero to its foot.
+ * Its body is now cut into bands at its section headings, and each band
+ * takes the next ground in a cycle that alternates a paper with a night:
+ * the papers and nights are the tokens the site already carries
+ * (constants/tokens.ts SITE), never new colours, and never a gradient.
+ *
+ * A band needs two blocks of content before the next heading opens another,
+ * so consecutive headings never make an empty band. Legal text, forms and
+ * the Journal index are left on one ground: those pages are read for
+ * accuracy, not for rhythm.
+ */
+const BANDS_ON_NIGHT = ["manila", "pine", "sage", "tide", "kraft", "umber", "haze", "clay"] as const;
+const BANDS_ON_PAPER = ["pine", "sage", "tide", "kraft", "umber", "haze", "clay", "manila"] as const;
+const NIGHT_GROUNDS = new Set<string>(["pine", "tide", "umber"]);
+function bandsOf(list: readonly Block[], banded: boolean): Block[][] {
+  if (!banded || list.some((b) => b.legal || b.form || b.deposit || b.jcards)) return [list as Block[]];
+  const out: Block[][] = [[]];
+  let content = 0;
+  for (const b of list) {
+    if (b.h && content >= 2) { out.push([]); content = 0; }
+    out[out.length - 1].push(b);
+    if (!b.h && !b.toc) content++;
+  }
+  return out;
+}
+
 export function TXT(P: SitePage, faqs: Readonly<Record<string, string>> = {}) {
   /* A page with a picture of its own wears the day, as its estate does (PROP):
      the picture stands by itself, and the heading and the facts go on paper. */
@@ -560,8 +590,14 @@ export function TXT(P: SitePage, faqs: Readonly<Record<string, string>> = {}) {
       (facts ? `<div class="tx-split-facts">${facts}</div>` : "") + `</section>` +
       (tail ? `<article class="tx-body${lt ? " lt" : ""}${pic}"${pal}>${tail}</article>` : "") + next;
   }
-  return `<section class="tx-hero${lt ? " lt" : ""}${pic}"${pal}>${filmHTML}${headHTML}</section>` +
-    `<article class="tx-body${lt ? " lt" : ""}${pic}"${pal}>${run(P.blocks)}</article>` + next;
+  const bands = bandsOf(P.blocks, !P.img);
+  const cycle = lt ? BANDS_ON_PAPER : BANDS_ON_NIGHT;
+  const body = bands.map((list, i) => {
+    if (i === 0) return `<article class="tx-body${lt ? " lt" : ""}${pic}"${pal}>${run(list)}</article>`;
+    const g = cycle[(i - 1) % cycle.length];
+    return `<article class="tx-body tx-band tx-band-${g}${NIGHT_GROUNDS.has(g) ? "" : " lt"}${lt ? " tx-band-w" : ""}"${pal}>${run(list)}</article>`;
+  }).join("");
+  return `<section class="tx-hero${lt ? " lt" : ""}${pic}"${pal}>${filmHTML}${headHTML}</section>` + body + next;
 }
 
 /** The next step, as one wide link. The stage is named so the reader can see the path. */

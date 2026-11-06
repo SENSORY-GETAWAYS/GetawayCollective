@@ -185,7 +185,7 @@
 .site .pg-col{background:var(--light);color:var(--ink);--mute:var(--gc-s-ash);--line:var(--gc-hairline)}
 .site .col-head{padding:calc(var(--gc-sp-3xs) * 17.5) var(--gut) calc(var(--gc-sp-3xs) * 4.5);border-bottom:1px solid var(--gc-s-rule)}
 .site .col-head h1{margin:0;font:700 clamp(34px,3.6vw,46px)/1 var(--display);letter-spacing:-.025em}
-.site .col-head .col-lead{margin:var(--gc-sp-s) 0 0;max-width:var(--read)}
+.site .col-head .col-lead{margin:var(--gc-sp-s) 0 0;max-width:var(--read);color:var(--gc-s-stone)}
 .site .filters{display:flex;justify-content:space-between;align-items:center;gap:var(--gc-sp-s);flex-wrap:wrap;padding:calc(var(--gc-sp-3xs) * 4.5) var(--gut) 0}
 .site .fl{display:flex;gap:calc(var(--gc-sp-3xs) * 1.5);align-items:center;flex-wrap:wrap;font-size:14px;color:var(--gc-s-ash)}
 .site .fl button{--c:5px;border:0;background:var(--gc-s-chip);padding:calc(var(--gc-sp-3xs) * 2.25) var(--gc-sp-s);cursor:pointer;font:600 13.5px var(--text);clip-path:polygon(var(--c) 0,100% 0,100% calc(100% - var(--c)*2),calc(100% - var(--c)) 100%,0 100%,0 calc(var(--c)*2))}
@@ -703,21 +703,71 @@
 .site .tx-h2{scroll-margin-top:80px}
 /* Journal digital assemblies (23 Oct 2026): a drawing, a story, a picture, each with room around it. */
 .site .j-fig,.site .j-illus{margin:calc(var(--gc-sp-l) * 1.25) 0;max-width:var(--col)}
-.site :is(.j-fig,.j-illus) figcaption{margin-top:var(--gc-sp-xs);font:500 13px/1.5 var(--text);color:var(--gc-s-fog);max-width:var(--read)}
+.site :is(.j-fig,.j-illus) figcaption{margin-top:var(--gc-sp-xs);font:500 13px/1.5 var(--text);color:var(--mute);max-width:var(--read)}
 .site .j-illus-im{position:relative;aspect-ratio:16/9;overflow:hidden;background:var(--gc-s-tide)}
 .site .j-illus-im>:is(canvas,.film-img,picture>.film-img){position:absolute;inset:0;width:100%;height:100%}
 .site .j-story{margin:calc(var(--gc-sp-l) * 1.25) 0;padding:var(--gc-sp-m) 0 var(--gc-sp-m) var(--gc-sp-m);border-left:1px solid var(--gc-hairline);max-width:var(--read);display:grid;gap:var(--gc-sp-xs)}
 .site .j-story h3{margin:0;font:700 20px/1.25 var(--display);letter-spacing:-.01em}
 .site .j-story p{margin:0;font:500 16px/1.7 var(--text)}
+/* -- Colour, 6 Nov 2026 -------------------------------------------------
+   Founder: "most pages look very monotonous; bring colour contrast into all
+   the pages." Grounds are the tokens the site already carries (papers and
+   nights, constants/tokens.ts SITE); copper stays currency; no gradient.
+   .gr-* grounds a home section; .tx-band-* grounds a band of a text page
+   (render.ts bandsOf). Nights keep the light-on-dark scheme, papers take
+   the ink scheme, exactly as the existing paper sections do. */
+.site :is(.gr-pine,.gr-tide,.gr-umber){color:var(--paper);--mute:var(--gc-s-mute);--line:var(--gc-s-line)}
+.site :is(.gr-manila,.gr-kraft,.gr-sage,.gr-haze,.gr-clay){color:var(--ink);--mute:var(--gc-s-ash);--line:var(--gc-hairline)}
+.site :is(.gr-manila,.gr-kraft,.gr-sage,.gr-haze,.gr-clay) :is(.para,.dim,.mute){color:var(--gc-s-stone)}
+.site :is(.gr-manila,.gr-kraft,.gr-sage,.gr-haze,.gr-clay) .btn.gray{background:var(--gc-paper-panel);color:var(--ink)}
+.site :is(.gr-manila,.gr-kraft,.gr-sage,.gr-haze,.gr-clay) .btn:not(.lead):not(.gray):not(.dark){background:var(--ink);color:var(--paper)}
+.site :is(.gr-manila,.gr-kraft,.gr-sage,.gr-haze,.gr-clay) .hero-link{color:inherit}
+.site .gr-pine{background:var(--gc-s-pine)}
+.site .gr-tide{background:var(--gc-s-tide)}
+.site .gr-umber{background:var(--gc-s-umber)}
+.site .gr-manila{background:var(--gc-s-manila)}
+.site .gr-kraft{background:var(--gc-s-kraft)}
+.site .gr-sage{background:var(--gc-s-sage)}
+.site .gr-haze{background:var(--gc-s-haze)}
+.site .gr-clay{background:var(--gc-s-clay)}
+.site :is(.fit,.parties).gr-pine,.site :is(.fit,.parties).gr-tide,.site :is(.fit,.parties).gr-haze,.site :is(.fit,.parties).gr-sage{border-top:0}
+.site .spv.gr-sage{border-top:0}
+/* a band of a text page */
+.site article.tx-body.tx-band{max-width:none;margin:0;padding:calc(var(--sec) * .8) max(var(--gut),calc((100% - 860px) / 2))}
+.site article.tx-body.tx-band.tx-band-w{padding-inline:max(var(--gut),calc((100% - var(--col)) / 2))}
+.site .tx-body.tx-band-manila{background:var(--gc-s-manila)}
+.site .tx-body.tx-band-kraft{background:var(--gc-s-kraft)}
+.site .tx-body.tx-band-sage{background:var(--gc-s-sage)}
+.site .tx-body.tx-band-haze{background:var(--gc-s-haze)}
+.site .tx-body.tx-band-clay{background:var(--gc-s-clay)}
+.site .tx-body.tx-band:is(.tx-band-pine,.tx-band-tide,.tx-band-umber){color:var(--paper);--mute:var(--gc-s-mute);--line:var(--gc-s-line)}
+.site .tx-body.tx-band:is(.tx-band-pine,.tx-band-tide,.tx-band-umber) :is(summary,.tx-h3){color:var(--paper)}
+.site .tx-body.tx-band:is(.tx-band-pine,.tx-band-tide,.tx-band-umber) :is(.tx-steps em,.tx-steps p:not(.tx-assert)){color:var(--gc-s-fog)}
+.site .tx-body.tx-band:is(.tx-band-pine,.tx-band-tide,.tx-band-umber) .tx-steps p.tx-assert{color:var(--ink)}
+.site .tx-body.tx-band-pine{background:var(--gc-s-pine)}
+.site .tx-body.tx-band-tide{background:var(--gc-s-tide)}
+.site .tx-body.tx-band-umber{background:var(--gc-s-umber)}
+.site .tx-body.tx-band:is(.tx-band-manila,.tx-band-kraft,.tx-band-sage,.tx-band-haze,.tx-band-clay){color:var(--ink)}
+/* small labels need a deeper ink on a tinted paper than on the near-white page */
+.site .tx-body.tx-band:is(.tx-band-kraft,.tx-band-sage,.tx-band-haze,.tx-band-clay) :is(.tx-ch,.da-lk-m span){color:var(--gc-s-stone)}
+.site .tx-body.tx-band:is(.tx-band-kraft,.tx-band-sage,.tx-band-haze,.tx-band-clay) .da-tag.warn{color:var(--gc-s-ember)}
+/* Estate chapters, 6 Nov 2026: each takes its own ground; the last, the estate's own night. */
+.site .est.est-day .chamber{padding-bottom:var(--sec)}
+.site .est.est-day .chamber.ch-0{background:var(--gc-s-manila)}
+.site .est.est-day .chamber.ch-1{background:var(--est-paper)}
+.site .est.est-day .chamber.ch-2{background:var(--gc-s-kraft)}
+.site .est.est-day .chamber.ch-last{background:var(--est-deep);color:var(--paper);--mute:var(--gc-s-mute);--line:var(--gc-s-line)}
+.site .est.est-day .chamber.ch-last :is(.ttl h3,.para,.so,.chap-foot){color:var(--paper)}
+.site .est.est-day .chamber.ch-last .para{color:var(--gc-s-rule)}
 .site .tx-pull{margin:var(--gc-sp-l) 0;padding:var(--gc-sp-m) 0;border-top:2px solid var(--copper);border-bottom:1px solid var(--line)}
-.site .tx-pull p{margin:0;font:200 clamp(28px,3.6vw,46px)/1.12 var(--display);letter-spacing:-.03em;color:var(--paper);text-wrap:balance}
+.site .tx-pull p{margin:0;font:200 clamp(28px,3.6vw,46px)/1.12 var(--display);letter-spacing:-.03em;color:inherit;text-wrap:balance}
 .site .tx-inspire{margin:var(--gc-sp-xl) 0 var(--gc-sp-m);padding:var(--gc-sp-l) var(--gc-sp-l) var(--gc-sp-m);background:var(--panel);--mute:var(--gc-s-mute);--line:var(--gc-s-line);position:relative}
 .site .tx-inspire:before{content:"\201C";position:absolute;left:var(--gc-sp-s);top:calc(var(--gc-sp-3xs) * -4);font:800 96px/1 var(--display);color:var(--copper)}
 .site .tx-inspire blockquote{margin:0;font:300 clamp(22px,2.6vw,32px)/1.25 var(--display);letter-spacing:-.02em;color:var(--paper)}
 .site .tx-inspire figcaption{margin-top:var(--gc-sp-s);display:grid;gap:calc(var(--gc-sp-3xs) * .5);font-size:13.5px}
 .site .tx-inspire figcaption b{font-weight:600;color:var(--paper)}
 .site .tx-inspire figcaption span{color:var(--mute);font-style:italic}
-.site .ig{margin:var(--gc-sp-m) 0;padding:var(--gc-sp-m);background:var(--gc-s-coal);--mute:var(--gc-s-mute);--line:var(--gc-s-line);border:1px solid var(--line)}
+.site .ig{margin:var(--gc-sp-m) 0;padding:var(--gc-sp-m);background:var(--gc-s-coal);color:var(--paper);--mute:var(--gc-s-mute);--line:var(--gc-s-line);border:1px solid var(--line)}
 .site .ig-svg{display:block;width:100%;height:auto}
 .site .ig-narrow{max-width:520px;margin:0 auto}
 .site .ig-cap{margin:var(--gc-sp-s) 0 0;font:500 13px/1.6 var(--text);color:var(--mute)}

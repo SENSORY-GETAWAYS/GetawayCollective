@@ -121,7 +121,7 @@ export function SiteHome() {
       const pct = total ? Math.round(10000 / total) / 100 : 0;
       const founders = o.promoterIs ? total - o.units : 0;
       const nowLine = COLLECTION.find((c) => c.href === `/collection/${pack.vehicle.slug}`)?.now;
-      return `<section class="now"><div><span class="eb">Open now</span><h2 class="h2">${esc(pack.name)}</h2>` +
+      return `<section class="now gr-tide"><div><span class="eb">Open now</span><h2 class="h2">${esc(pack.name)}</h2>` +
         `<p class="para">${esc(pack.name)} is open now${nowLine ? `: ${esc(nowLine)}` : ""}. Its LLP, ${esc(pack.vehicle.registeredName)}, is divided into ${total} units of ${pct}% each.` +
         `${founders > 0 ? ` The founders hold ${founders}, for the land they bring.` : ""} ${o.available} units are offered to new partners, at ${rupees(o.unitPrice)} each.` +
         `${pack.vehicle.llpin ? "" : " The LLP will be formed once all investment commitments are received."}</p>` +
@@ -132,19 +132,19 @@ export function SiteHome() {
     `<section class="ref"><div>${plate("solace/mist", { sizes: "(max-width: 700px) 100vw, 34vw", tag: "none" })}</div><div>${plate("creek/water", { sizes: "(max-width: 700px) 100vw, 34vw", tag: "none" })}</div><div>${plate("cff/fire", { sizes: "(max-width: 700px) 100vw, 34vw", tag: "none" })}</div>` +
     '<div class="mid"><div><span class="eb">What you own</span><b>ONE ESTATE, ONE LLP</b><p class="para para-s">Units in the partnership that owns the land and the buildings. Partners decide together, each vote weighted by what they hold. One operating partner runs every estate.</p><a class="btn" href="/how-it-works">How ownership works</a></div></div></section>' +
     /* Copy review R1: the structure the whole site rests on, stated once. */
-    '<section class="spv"><div class="center gut"><span class="eb">The structure</span><h2 class="h2">One asset. <span>Its own LLP.</span></h2>' +
+    '<section class="spv gr-sage"><div class="center gut"><span class="eb">The structure</span><h2 class="h2">One asset. <span>Its own LLP.</span></h2>' +
     '<p class="para">Each estate is a single asset held in its own special purpose vehicle (SPV): an entity formed for that one estate and nothing else. The SPV takes the form of a limited liability partnership (LLP), and the LLP gives its partners four things. It is a legal entity in its own right. It owns the land and the buildings in its own name, signs its own contracts and keeps its own accounts. Each partner&rsquo;s liability is limited to what they agreed to contribute. It continues unchanged as partners join or leave. And because it holds one estate only, that estate&rsquo;s money and obligations remain inside it.</p>' +
     '<p class="para">The LLP is owned exclusively by its partners, a small circle of individuals invited to join. You join by buying units; each unit is a fixed share of the LLP, and of everything it owns.</p></div></section>' +
     /* Wave 1, GC-19-CT-001 R4 (founder, 23 Oct 2026): who it suits and who is
        behind it, in the investor's words. Figures from the register; Solace's
        remain private (6 Oct ruling). */
-    '<section class="fit"><div class="fit-h"><span class="eb">Who it suits</span><h2 class="h2">Ownership for people who want <span>to hold something real.</span></h2></div><dl class="fit-grid">' +
+    '<section class="fit gr-pine"><div class="fit-h"><span class="eb">Who it suits</span><h2 class="h2">Ownership for people who want <span>to hold something real.</span></h2></div><dl class="fit-grid">' +
     '<div><dt>Capital you can set aside</dt><dd>Units are held for the estate&rsquo;s lock-in, 36 months at most estates, and then offered to fellow partners first.</dd></div>' +
     '<div><dt>One place, not a portfolio</dt><dd>You own a share of one estate you can visit, with its own accounts.</dd></div>' +
     '<div><dt>A say in it</dt><dd>Partners decide together, each vote weighted by what they hold.</dd></div>' +
     '<div><dt>Nights of your own</dt><dd>One night a year for each 1% you hold, from handover.</dd></div>' +
     '</dl><p class="para para-s">Investing from outside India, or for a family office? <a class="tx-u" href="/answers">The answers</a> cover who can invest and how much one partner may hold.</p></section>' +
-    '<section class="parties"><div class="fit-h"><span class="eb">Who is behind it</span><h2 class="h2">Three parties, <span>each with one job.</span></h2></div><dl>' +
+    '<section class="parties gr-haze"><div class="fit-h"><span class="eb">Who is behind it</span><h2 class="h2">Three parties, <span>each with one job.</span></h2></div><dl>' +
     '<div><dt>NAVINA Structures Pvt Ltd</dt><dd>Forms each estate&rsquo;s LLP and governs it, as Getaway Collective, its brand. It holds your deposit as a fiduciary until you are admitted, keeps the register, runs the votes and reports to partners. It holds no equity, and is paid from one disclosed stage of revenue.</dd></div>' +
     `<div><dt>The promoters</dt><dd>Nikhil Deshpande and Shirisha Avanchi, NAVINA&rsquo;s directors and shareholders, invest alongside you in their own names: the same units, on the same terms, paid at the same stage, so their money rises and falls with yours.${stakes ? ` ${stakes}.` : ""}</dd></div>` +
     '<div><dt>Sensory Getaways</dt><dd>Runs each estate: the guests, the staff and the upkeep. It is measured on agreed service levels and answers to the partners&rsquo; vote.</dd></div>' +
